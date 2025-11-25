@@ -367,7 +367,7 @@ main() {
         fi
         if [ "$has_ai" = false ]; then
             echo "  [!] ST Edge AI (stedgeai) - for AI model generation"
-            echo "    Download: https://www.st.com/stedgeai-core"
+            echo "    Download: https://www.st.com/en/development-tools/stedgeai-core
             echo "    Set STEDGEAI_CORE_DIR environment variable after install"
         fi
         echo ""

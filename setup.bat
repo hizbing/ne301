@@ -201,7 +201,7 @@ if %HAS_FLASH% == 0 (
 )
 if %HAS_AI% == 0 (
     echo   [!] ST Edge AI ^(stedgeai^) - for AI model generation
-    echo     Download: https://www.st.com/stedgeai-core
+    echo     Download: https://www.st.com/en/development-tools/stedgeai-core
     echo     Set STEDGEAI_CORE_DIR environment variable after install
 )
 if %HAS_FLASH% == 0 echo.

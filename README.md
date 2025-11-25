@@ -10,9 +10,9 @@
 ## ✨ Key Features
 
 - 🎥 **Real-time Video Processing** - Multiple camera sensor support (OS04C10, IMX335)
-- 🧠 **AI Accelerated Inference** - NPU hardware acceleration, YOLOv8/YOLOX object detection
+- 🧠 **AI Accelerated Inference** - NPU hardware acceleration, YOLOv8/YOLOX
 - 🌐 **Modern Web Interface** - Preact + TypeScript, real-time preview and configuration
-- 📡 **Multi-network Support** - Ethernet, WiFi, USB connectivity
+- 📡 **Multi-network Support** - Ethernet, WiFi, Cat1, BLE connectivity
 - 🔒 **Secure Boot** - TrustZone secure partitioning, firmware signature verification
 - 🔄 **OTA Updates** - Secure over-the-air firmware and model upgrade
 
@@ -107,12 +107,19 @@ make                        # Build all
 #### 💻 Method 2: Source Installation
 
 **Prerequisites:**
-- ARM GCC 13.3+, GNU Make 3.81+, Python 3.8+, Node.js 20+, pnpm 9+, STM32CubeProgrammer(v1.9.0), STM32_SigningTool_CLI(v1.9.0), stedgeai(v2.2,stedgeai0202.stneuralart)
+- ARM GCC 13.3+
+- GNU Make 3.81+ 
+- Python 3.8+
+- Node.js 20+
+- pnpm 9+
+- STM32CubeProgrammer(v2.19.0)
+- STM32_SigningTool_CLI(v2.19.0)
+- stedgeai(v2.2,stedgeai0202.stneuralart)
 
 ```bash
 # 1. Check environment
 ./check_env.sh
-# 2. Auto setup
+# 2. Install as prompted
 ./setup.sh                  # Linux/macOS
 setup.bat                   # Windows
 # 3. Verify
@@ -130,7 +137,8 @@ See [SETUP.md](SETUP.md) for detailed installation instructions.
 - 3P 2.54mm pitch dual female header dupont wires (Used for flash U0 chips)
 - Type C USB cable compatible with the computer's USB port (for e.g., type C to type A if the computer has a type A USB port)
 
-#### When flash apps, web, and models
+The mainboard contains two MCUs： **stm32n6** and **stm32u0**
+#### Ready for Flashing `apps`, `web`, or `models` to **stm32n6**
 1. Turn on the dip switch 2 on the board to enter the flash mode.***(After the flash is completed, please turn it off and power it back on or reset it to enter the running mode)*** 
 
 ![alt text](https://resources.camthink.ai/wiki/img/NE301_N6_FLASH_1.png)
@@ -143,7 +151,7 @@ See [SETUP.md](SETUP.md) for detailed installation instructions.
 
 ![alt text](https://resources.camthink.ai/wiki/img/NE301_N6_FLASH_3.png)
 
-#### When flash wakecore
+#### Ready for Flashing `wakecore` to **stm32u0**
 1. Connect ST-LINK to STM32U0 chip using 3P DuPont wire and connect ST-LINK to computer.
 
 ![alt text](https://resources.camthink.ai/wiki/img/NE301_U0_FLASH_1.png)
@@ -152,7 +160,7 @@ See [SETUP.md](SETUP.md) for detailed installation instructions.
 
 ![alt text](https://resources.camthink.ai/wiki/img/NE301_U0_FLASH_2.png)
 
-### Build and Flash
+### Build
 
 ```bash
 # Build
@@ -162,16 +170,47 @@ make web                    # Build web frontend
 make model                  # Build AI model
 make pkg                    # package for flash or OTA
 make info                   # help
+```
 
-# Flash all components
-make flash
+### Flash
 
-# Flash specific component
-make flash-fsbl
-make flash-app
-make flash-web
-make flash-model
-make flash-wakecore
+1. Firmwares List
+```bash
+  ne301_FSBL_signed.bin       --> use for stm32n6 FSBL        --> flash addr 0x70000000
+  ne301_App_signed_pkg.bin    --> use for stm32n6 App         --> flash addr 0x70100000
+  ne301_Web_pkg.bin           --> use for web gui             --> flash addr 0x70400000
+  ne301_Model_pkg.bin         --> use for AI model            --> flash addr 0x70900000
+  ne301_WakeCore.bin          --> use for stm32u0 wakecore    --> flash addr 0x08000000 
+```
+2. Flash tools supported
+
+- STM32CubeProgrammer
+- Script/maker.sh
+
+```bash
+Script/maker.sh flash <bin-name> <flash-addr>
+```
+- make 
+
+```bash
+  # Flash all components
+  make flash
+  # Flash specific component
+  make flash-fsbl
+  make flash-app
+  make flash-web
+  make flash-model
+  make flash-wakecore
+  ```bash
+  # Flash all components
+  make flash
+
+  # Flash specific component
+  make flash-fsbl
+  make flash-app
+  make flash-web
+  make flash-model
+  make flash-wakecore
 ```
 
 ## 📄 License
