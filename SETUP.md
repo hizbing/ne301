@@ -149,8 +149,8 @@ STM32_SigningTool_CLI --version
 **All platforms:**
 
 1. Download **ST Edge AI Core**
-   - Official: https://www.st.com/en/development-tools/stedgeai-core.html
-   - Or via **STM32Cube.AI**: https://www.st.com/stm32cubeai
+   - Official: https://www.st.com/en/development-tools/stedgeai-core.html#get-software
+   - Or via **STM32Cube.AI**: https://www.st.com/en/embedded-software/x-cube-ai.html#get-software
 
 2. Installation locations:
    - **Windows:** `C:\Users\<username>\STM32Cube\Repository\Packs\STMicroelectronics\X-CUBE-AI\<version>\Utilities\windows`
@@ -359,7 +359,7 @@ STM32_SigningTool_CLI --version
 
 ```bash
 # 1. Download ST Edge AI Core
-#    https://www.st.com/stedgeai-core
+#    https://www.st.com/en/development-tools/stedgeai-core.html#get-software
 
 # 2. Install to default location
 

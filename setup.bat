@@ -117,7 +117,7 @@ if %ERRORLEVEL% == 0 (
     echo [OK] stedgeai found
 ) else (
     echo [!] stedgeai not found ^(optional, for AI model generation^)
-    echo     Download: https://www.st.com/stedgeai-core
+    echo     Download: https://www.st.com/en/development-tools/stedgeai-core.html#get-software
 )
 
 REM Check STEDGEAI_CORE_DIR
@@ -201,7 +201,7 @@ if %HAS_FLASH% == 0 (
 )
 if %HAS_AI% == 0 (
     echo   [!] ST Edge AI ^(stedgeai^) - for AI model generation
-    echo     Download: https://www.st.com/en/development-tools/stedgeai-core
+    echo     Download: https://www.st.com/en/development-tools/stedgeai-core.html#get-software
     echo     Set STEDGEAI_CORE_DIR environment variable after install
 )
 if %HAS_FLASH% == 0 echo.
