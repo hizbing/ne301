@@ -201,16 +201,6 @@ Script/maker.sh flash <bin-name> <flash-addr>
   make flash-web
   make flash-model
   make flash-wakecore
-  ```bash
-  # Flash all components
-  make flash
-
-  # Flash specific component
-  make flash-fsbl
-  make flash-app
-  make flash-web
-  make flash-model
-  make flash-wakecore
 ```
 
 ## 📄 License
